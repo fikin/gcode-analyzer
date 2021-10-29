@@ -6,26 +6,6 @@ import (
 	"unicode"
 )
 
-// File represents *.gcode content (gcode application)
-type File struct {
-	Lines []*Line
-}
-
-// Line represents one line (gcode block) from *.gcode file
-type Line struct {
-	DeleteFlg bool
-	LineNbr   string
-	Codes     []*GCode
-	Comment   string
-}
-
-// GCode represents one command
-type GCode struct {
-	Letter  string
-	Value   string
-	Comment string
-}
-
 // ParseGCodeFile is parsing given file into data structure
 func ParseGCodeFile(filename string) (*File, error) {
 	body, err := ioutil.ReadFile(filename)
